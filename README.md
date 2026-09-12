@@ -1,5 +1,7 @@
 # Industrial Vision Inspector
 
+[![CI](https://github.com/tahazarif10/industrial-vision-inspector/actions/workflows/ci.yml/badge.svg)](https://github.com/tahazarif10/industrial-vision-inspector/actions/workflows/ci.yml)
+
 A reproducible **Python + OpenCV + PyTorch** portfolio project for industrial surface-defect inspection.
 
 The project deliberately separates two things that are often blurred together:
@@ -130,6 +132,6 @@ Official source: `https://faculty.neu.edu.cn/songkc/en/zdylm/263265/list/`
 
 ## Project status
 
-**v0.1:** software pipeline complete and locally verified. Real NEU-CLS benchmark metrics are intentionally not claimed until the real dataset is prepared and training is executed on the target machine.
+**v0.1:** software pipeline complete and locally verified. GitHub Actions CI passes the package install, tests, and synthetic smoke-dataset checks. Real NEU-CLS benchmark metrics are intentionally not claimed until the real dataset is prepared and training is executed on the target machine.
 
 See `docs/MODEL_CARD.md`, `docs/DATASET.md`, and `docs/ARCHITECTURE.md` for evidence boundaries and design details.
