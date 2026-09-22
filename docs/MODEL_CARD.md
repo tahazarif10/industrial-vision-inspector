@@ -19,7 +19,7 @@ A probability distribution over the configured classes, top prediction/confidenc
 
 ## Metrics
 
-Accuracy, macro precision, macro recall, macro F1, confusion matrix and per-class precision/recall/F1.
+Accuracy, top-2 accuracy, macro precision/recall/F1, confusion matrix, per-class precision/recall/F1, mean confidence, negative log-likelihood, multiclass Brier score, expected calibration error (ECE), and reliability bins/diagram.
 
 ## Current evidence
 
@@ -29,6 +29,6 @@ The software pipeline and seven local tests were executed on deterministic synth
 
 - classifier only; it does not localize defects
 - target camera/lighting may differ from the training distribution
-- confidence is not calibrated for safety-critical decisions
+- calibration quality is measured, not corrected; no confidence threshold is validated for safety-critical decisions
 - image-quality metrics are engineering indicators, not defect probabilities
 - production deployment would require target-line validation, drift monitoring, latency measurements and false-accept/false-reject analysis
