@@ -21,7 +21,7 @@ It is designed around the public **NEU-CLS steel-surface defect classification d
 - optional ResNet-18 transfer-learning path
 - deterministic train/validation/test preparation for NEU-CLS
 - SHA-256 data manifest generation for reproducibility
-- accuracy, macro precision, macro recall, macro F1 and confusion-matrix evaluation
+- accuracy, top-2 accuracy, macro precision/recall/F1, confusion-matrix evaluation, negative log-likelihood, multiclass Brier score, expected calibration error (ECE), and reliability diagrams
 - checkpointed single-image inference with ranked probabilities
 - unit tests and GitHub Actions CI
 
@@ -104,7 +104,7 @@ This copies images into class-stratified `train`, `val`, and `test` folders and 
 ivi train --data J:\datasets\NEU-CLS-split --output artifacts\neu_resnet18 --model resnet18 --pretrained --epochs 20 --image-size 224 --batch-size 32 --learning-rate 0.0003
 ```
 
-`--pretrained` uses torchvision's ImageNet weights and therefore needs the weights available in the local PyTorch cache or network access on first use.
+`--pretrained` uses torchvision's ImageNet weights and therefore needs the weights available in the local PyTorch cache or network access on first use.\n\nEvaluation reports both discrimination and probabilistic-quality metrics. In addition to accuracy/F1 and the confusion matrix, `metrics_<split>.json` records top-2 accuracy, mean confidence, negative log-likelihood, multiclass Brier score, ECE, and the populated calibration bins; `reliability_<split>.png` visualizes confidence versus empirical accuracy.
 
 ### Evaluate and infer
 
@@ -132,6 +132,6 @@ Official source: `https://faculty.neu.edu.cn/songkc/en/zdylm/263265/list/`
 
 ## Project status
 
-**v0.1:** software pipeline complete and locally verified. GitHub Actions CI passes the package install, tests, and synthetic smoke-dataset checks. Real NEU-CLS benchmark metrics are intentionally not claimed until the real dataset is prepared and training is executed on the target machine.
+**v0.1:** software pipeline complete and locally verified. GitHub Actions CI passes the package install, tests, and synthetic smoke-dataset checks. The evaluation path includes calibration-aware probabilistic metrics, but real NEU-CLS benchmark values are intentionally not claimed until the real dataset is prepared and training is executed on the target machine.
 
 See `docs/MODEL_CARD.md`, `docs/DATASET.md`, and `docs/ARCHITECTURE.md` for evidence boundaries and design details.
